@@ -37,6 +37,8 @@
 </head>
 
 <body>
+  <script src="../assets/js/jquery-3.6.1.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
 
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
@@ -120,22 +122,46 @@
       </nav>
     </div><!-- End Breadcrumbs -->
     
-    <div>
-      <ul>
-        <% for(var i=0; i<data.length; i++) {%>
-            <li>
-              Nome: <%= data[i].NOME %>
-              Especie: <%= data[i].ESPECIE %>
-              Sexo: <%= data[i].SEXO %>
-              Idade: <%= data[i].IDADE %>
-              Deficiencia: <%= data[i].DEFICIENCIA %>
-              Raça: <%= data[i].RACA %>
-              Cor: <%= data[i].COR %>
-              Peso: <%= data[i].PESO %>
-            </li>
-            <% } %>
-    </ul>>
-    </div>
+   
+      <table class="table table-striped table-bordered" style="width:100%" id="mydatatable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Especie</th>
+                <th>Sexo</th>
+                <th>Idade</th>
+                <th>Deficiencia</th>
+                <th>Raça</th>
+                <th>Cor</th>
+                <th>Peso</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) {%>
+            <tr>
+                <td><%= data[i].NOME %></td>
+                <td> <%= data[i].ESPECIE %></td>
+                <td> <%= data[i].SEXO %></td>
+                <td><%= data[i].IDADE %></td> 
+                <td> <%= data[i].DEFICIENCIA %></td>
+                <td> <%= data[i].RACA %></td>
+                <td> <%= data[i].COR %></td>
+                <td> <%= data[i].PESO %></td>
+            </tr>
+          <% } %>
+        </tbody>
+        <tfoot>
+                <th>Nome</th>
+                <th>Especie</th>
+                <th>Sexo</th>
+                <th>Idade</th>
+                <th>Deficiencia</th>
+                <th>Raça</th>
+                <th>Cor</th>
+                <th>Peso</th>
+        </tfoot>
+    </table
+
 
     
   </main><!-- End #main -->
@@ -223,6 +249,9 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script>
+    $('#mydatatable').DataTable();
+  </script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

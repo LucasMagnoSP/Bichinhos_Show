@@ -38,7 +38,8 @@
 </head>
 
 <body>
-
+  <script src="../assets/js/jquery-3.6.1.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -121,14 +122,37 @@
       </nav>
     </div><!-- End Breadcrumbs -->
     <div>
-      <ul>
-        <% for(var i=0; i<data.length; i++) {%>
-            <li>
-                Nome: <%= data[i].NOME %>
-            </li>
-            <% } %>
-    </ul>>
+      <table id="example"  class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Especie</th>
+                <th>Sexo</th>
+                <th>Idade</th>
+                <th>Deficiencia</th>
+                <th>Raça</th>
+                <th>Cor</th>
+                <th>Peso</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) {%>
+            <tr>
+                <td><%= data[i].NOME %></td>
+                <td> <%= data[i].ESPECIE %></td>
+                <td> <%= data[i].SEXO %></td>
+                <td><%= data[i].IDADE %></td> 
+                <td> <%= data[i].DEFICIENCIA %></td>
+                <td> <%= data[i].RACA %></td>
+                <td> <%= data[i].COR %></td>
+                <td> <%= data[i].PESO %></td>
+            </tr>
+          <% } %>
+        </tbody>
+    </table
+      
     </div>
+
 
   </main><!-- End #main -->
 
