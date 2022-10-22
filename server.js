@@ -167,7 +167,6 @@ app.set('views', './views');
 
 //LISTEN
   app.listen(port, () => {
-    console.log(`The application started
-    successfully on port ${port}`);
+    console.log(`Aplicação aberta com sucesso na porta -> ${port}`);
   });
 //
