@@ -6,7 +6,7 @@ const chalk = require('chalk')
  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -40,9 +40,9 @@ app.set('views', './views');
         return result;
     }
   }
-  app.get('/cachorros/:page',(req,res)=>{
-    const page = parseInt(req.params.page);
-    const limit = 10;
+  app.get('/cachorros',(req,res)=>{
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
     const startIndex = (page -1) * limit;
     const endIndex = page * limit;
     const objarryCa = new Array;
@@ -67,9 +67,11 @@ app.set('views', './views');
         }
         resl.results = objarryCa.slice(startIndex, endIndex);
 
+        // const resl = objarryCa.slice(startIndex, endIndex);
+        // console.log("page " + page)
+        // console.log("limite " + limit)
         console.log(resl)
-        
-        res.render('cachorros',{data : resl.results, nump : resl.previous, numn : resl.next, })
+        res.render('cachorros',{data : resl.results})
     })
   })
 //
@@ -99,36 +101,14 @@ app.set('views', './views');
         return result;
     }
   }
-  app.get('/gatos/:page',(req,res)=>{
-      const page = parseInt(req.params.page);
-      const limit = 10;
-      const startIndex = (page -1) * limit;
-      const endIndex = page * limit;
-      const objarryCa = new Array;
-      const resl = {}
-      allgatos(req).then(result =>{
+  app.get('/gatos',(req,res)=>{
+    allgatos(req).then(result =>{
+        const objarryGatos = new Array;
         for (let i in result.rows) {
-            objarryCa.push(JSON.parse(result.rows[i]))
+            objarryGatos.push(JSON.parse(result.rows[i]))
         }
         result = null;
-        
-        if(endIndex < objarryCa.length){
-            resl.next = {
-                page: page + 1,
-                limit: limit,
-            }
-        }
-        if(startIndex > 0){
-            resl.previous = {
-                page: page - 1,
-                limit: limit,
-            }
-        }
-        resl.results = objarryCa.slice(startIndex, endIndex);
-
-        console.log(resl)
-        
-        res.render('gatos',{data : resl.results, nump : resl.previous, numn : resl.next, })
+        res.render('gatos',{data : objarryGatos})
     })
   })
 //
