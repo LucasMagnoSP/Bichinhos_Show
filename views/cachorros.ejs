@@ -28,6 +28,32 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- Paginação Table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          $('#example').DataTable( {
+              "language": {
+                  "lengthMenu": "Mostrando _MENU_ cachorrinho(s) por pagina",
+                  "zeroRecords": "Nenhum cachorrinho encontrado - Desculpe :/",
+                  "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                  "infoEmpty": "Nada encontrado",
+                  "infoFiltered": "(pesquisado em _MAX_ resultadados totais)"
+              },
+              lengthMenu: [
+                [5,10, 25, 50, -1],
+                [5,10, 25, 50, 'Todos'],
+              ],
+              responsive: true
+          } );
+      } );
+    </script>
+  <!-- -->
 
   <!-- =======================================================
   * Template Name: Impact - v1.1.0
@@ -38,8 +64,7 @@
 </head>
 
 <body>
-  <script src="../assets/js/jquery-3.6.1.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
+
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -59,10 +84,9 @@
   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+  
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <a href><img src="assets\img\Logo\Design sem nome (17).png">
       </a>
       <nav id="navbar" class="navbar">
         <ul>
@@ -121,39 +145,38 @@
         </div>
       </nav>
     </div><!-- End Breadcrumbs -->
-    <div>
-      <table id="example"  class="table table-striped" style="width:100%">
-        <thead>
+    <!--Table -->
+        <table id="example" class="table table-striped" style="width:100%">
+          <thead>
             <tr>
-                <th>Nome</th>
-                <th>Especie</th>
-                <th>Sexo</th>
-                <th>Idade</th>
-                <th>Deficiencia</th>
-                <th>Raça</th>
-                <th>Cor</th>
-                <th>Peso</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% for(var i=0; i<data.length; i++) {%>
-            <tr>
-                <td><%= data[i].NOME %></td>
-                <td> <%= data[i].ESPECIE %></td>
-                <td> <%= data[i].SEXO %></td>
-                <td><%= data[i].IDADE %></td> 
-                <td> <%= data[i].DEFICIENCIA %></td>
-                <td> <%= data[i].RACA %></td>
-                <td> <%= data[i].COR %></td>
-                <td> <%= data[i].PESO %></td>
-            </tr>
-          <% } %>
-        </tbody>
-    </table
-      
-    </div>
-
-
+              <th>Nome</th>
+              <th>Sexo</th>
+              <th>Idade</th>
+              <th>Deficiencia</th>
+              <th>Raça</th>
+              <th>Cor</th>
+              <th>Peso</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<data.length; i++) {%>
+              <tr>
+                  <td><%= data[i].NOME %></td>
+                  <td> <%= data[i].SEXO %></td>
+                  <td><%= data[i].IDADE %></td> 
+                  <td> <%= data[i].DEFICIENCIA %></td>
+                  <td> <%= data[i].RACA %></td>
+                  <td> <%= data[i].COR %></td>
+                  <td> <%= data[i].PESO %></td>
+              </tr>
+            </div>
+            <% } %>
+          </tbody>
+          <tfoot>
+              
+          </tfoot>
+      </table>
+    <!--Table -->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -242,6 +265,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
 
 </body>
 

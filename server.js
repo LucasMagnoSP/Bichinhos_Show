@@ -41,37 +41,13 @@ app.set('views', './views');
     }
   }
   app.get('/cachorros',(req,res)=>{
-    const page = parseInt(req.query.page);
-    const limit = parseInt(req.query.limit);
-    const startIndex = (page -1) * limit;
-    const endIndex = page * limit;
     const objarryCa = new Array;
-    const resl = {}
     allcachorros(req).then(result =>{
         for (let i in result.rows) {
             objarryCa.push(JSON.parse(result.rows[i]))
         }
         result = null;
-        
-        if(endIndex < objarryCa.length){
-            resl.next = {
-                page: page + 1,
-                limit: limit,
-            }
-        }
-        if(startIndex > 0){
-            resl.previous = {
-                page: page - 1,
-                limit: limit,
-            }
-        }
-        resl.results = objarryCa.slice(startIndex, endIndex);
-
-        // const resl = objarryCa.slice(startIndex, endIndex);
-        // console.log("page " + page)
-        // console.log("limite " + limit)
-        console.log(resl)
-        res.render('cachorros',{data : resl.results})
+        res.render('cachorros',{data : objarryCa})
     })
   })
 //
@@ -111,6 +87,7 @@ app.set('views', './views');
         res.render('gatos',{data : objarryGatos})
     })
   })
+  
 //
 
 //PESQUISA
