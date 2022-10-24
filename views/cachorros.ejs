@@ -36,7 +36,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/r-2.3.0/datatables.min.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/r-2.3.0/datatables.min.css"/>
@@ -44,18 +44,27 @@
     <script>
         $(document).ready(function() {
           $('#example').DataTable( {
-              "language": {
-                  "lengthMenu": "Mostrando _MENU_ cachorrinho(s) por pagina",
-                  "zeroRecords": "Nenhum cachorrinho encontrado - Desculpe :/",
-                  "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                  "infoEmpty": "Nada encontrado",
-                  "infoFiltered": "(pesquisado em _MAX_ resultadados totais)"
+            "language": {
+              "lengthMenu": "Mostrando _MENU_ gatinho(s) por pagina",
+              "search":         "Busca :",
+              "zeroRecords": "Nenhum gatinho encontrado - Desculpe :/",
+              "info": "Mostrando pagina _PAGE_ de _PAGES_",
+              "infoEmpty": "Nada encontrado",
+              "infoFiltered": "(pesquisado em _MAX_ resultadados totais)",
+              "paginate": {
+                "first":      "Primeira",
+                "last":       "Ultima",
+                "next":       "Próxima",
+                "previous":   "Anterior"
+              },
+              
               },
               lengthMenu: [
                 [5,10, 25, 50, -1],
                 [5,10, 25, 50, 'Todos'],
               ],
-              responsive: true
+              responsive: true, 
+              pagingType: 'full_numbers',
           } );
       } );
     </script>
@@ -87,39 +96,27 @@
     </div>
   </section><!-- End Top Bar -->
 
-  <header id="header" class="header d-flex align-items-center">
+   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-  
+      <a href="/#" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+         <img src="assets\img\Logo\Design sem nome (17).png" alt="Logo"> 
+       <!-- <h1>Impact<span>.</span></h1>-->
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a href="/#hero"">Home</a></li>
+          <li><a href="/#about">Conheça nossa ONG</a></li>
+          <li><a href="/#services">Faça uma doação</a></li>
+          <li><a href="/#team">Sobre nós</a></li>
+          <li class="dropdown"><a href="#"><span>Adote um </span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="../gatos">Gatinho</a></li>
+              <li><a href="../cachorros">Cachorrinho</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="../search">Pesquisa</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -143,13 +140,6 @@
           </div>
         </div>
       </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <li><a href="/">VOLTAR PARA HOME</a></li>
-          </ol>
-        </div>
-      </nav>
     </div><!-- End Breadcrumbs -->
     <!--Table -->
         <table id="example" class="table table-striped" style="width:100%">
