@@ -16,9 +16,47 @@ app.set('views', './views');
   });
 //
 //ADOÇÃO
-app.get("/adocao", (req, res) => {
-  res.render('adocao');
-});
+  app.get("/adocao", (req, res) => {
+    res.render('adocao');
+  });
+  app.post('/adocao',(req,res)=>{
+    let especieSql
+    if(req.body.inputEspecie == 'cachorros'){
+       especieSql = 'Cachorro'
+    }else{
+       especieSql = 'Gato'
+    }
+    let sql = `INSERT INTO ${req.body.inputEspecie}(nome,especie,sexo,idade,deficiencia,raca,cor,peso)
+    VALUES ('${req.body.inputNome}','${especieSql}','${req.body.inputSexo}','${req.body.inputIdade}','${req.body.inputDeficiencia}','${req.body.inputRaca}','${req.body.inputCor}',${req.body.inputPeso})`
+    insert(req,res,sql).then(result =>{
+      res.render('adocao')
+    })
+  })
+
+  async function insert(req, res, sql) {
+    try {
+        connection = await oracledb.getConnection({
+            user: "lucas",
+            password: '1234',
+            connectString: "localhost:1521"
+        });
+        console.log(chalk.bgBlack.green('CONECTADO AO BANCO DE DADOS'));
+        await connection.execute(sql);
+    }catch (err) {
+        return res.send(err.message);
+    }finally {
+        if (connection) {
+          try {
+              await connection.execute('commit')
+              console.log(chalk.bgBlack.blue('O COMANDO ' + sql + ' FOI EFETUADO COM SUCESSO'));
+              await connection.close();
+              console.log(chalk.bgBlack.red('CONN FINALIZADA'));
+          } catch (err) {
+              console.error(err.message);
+            }
+      }
+    }
+  }
 //
 ///CACHORROS
   app.get('/cachorros',(req,res)=>{

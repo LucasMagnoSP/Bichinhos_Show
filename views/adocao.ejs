@@ -122,55 +122,81 @@
       </nav>
     </div><!-- End Breadcrumbs -->
     
-    <form>
+    <form  method="post">
+
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nome do Bichinho</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="inputNome" name="inputNome" >
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Raça do Bichinho</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+        <h3>ESPECIE</h3>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inputEspecie" id="inputEspecie" value="cachorros">
+            <label class="form-check-label" for="inlineRadio1">CACHORRO</label>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Peso </label><div id="emailHelp" class="form-text">(Aproximado e apenas Numeros)</div>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inputEspecie" id="inputEspecie" value="gatos">
+            <label class="form-check-label" for="inlineRadio2">GATO</label>
         </div>
+
+        <br>
         
         <h3>SEXO</h3>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <input class="form-check-input" type="radio" name="inputSexo" id="inputSexo" value="Macho">
             <label class="form-check-label" for="inlineRadio1">Macho</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <input class="form-check-input" type="radio" name="inputSexo" id="inputSexo" value="Femea">
             <label class="form-check-label" for="inlineRadio2">Femea</label>
         </div>
         <br>
 
-        <h3>ESPECIE</h3>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">CACHORRO</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">GATO</label>
-        </div>
+        <h3>Idade</h3>
+        <select class="form-select" aria-label="Default select example" id="inputIdade" name="inputIdade">
+            <option selected>Escolha :</option>
+            <option value="Filhote">Filhote</option>
+            <option value="Adulto">Adulto</option>
+            <option value="Idoso">Idoso</option>
+          </select>
+
         <br>
+
         <h3>POSSUI DEFICIENCIA ?</h3>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">CACHORRO</label>
+            <input class="form-check-input" type="radio" name="inputDeficiencia" id="inputDeficiencia" value="Sim">
+            <label class="form-check-label" for="inlineRadio1">SIM</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">GATO</label>
+            <input class="form-check-input" type="radio" name="inputDeficiencia" id="inputDeficiencia" value="Não">
+            <label class="form-check-label" for="inlineRadio2">NÃO</label>
         </div>
 
         <br>
+        
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Raça do Bichinho</label>
+            <input type="text" class="form-control" id="inputRaca"  name="inputRaca">
+        </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">COR </label>
+            <input type="text" class="form-control" id="inputCor"   name="inputCor">
+            
+        </div>
+
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Peso </label><div id="emailHelp" class="form-text">(Aproximado e apenas Numeros Ex: 6.43)</div>
+            <input type="text" class="form-control" id="inputPeso"   name="inputPeso">
+            
+        </div>
+
+        
+        <br>
+        
+
+        <button class="btn btn-primary">Submit</button>
     </form>
 
 
