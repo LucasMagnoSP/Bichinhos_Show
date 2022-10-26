@@ -29,7 +29,7 @@ app.set('views', './views');
     let sql = `INSERT INTO ${req.body.inputEspecie}(nome,especie,sexo,idade,deficiencia,raca,cor,peso)
     VALUES ('${req.body.inputNome}','${especieSql}','${req.body.inputSexo}','${req.body.inputIdade}','${req.body.inputDeficiencia}','${req.body.inputRaca}','${req.body.inputCor}',${req.body.inputPeso})`
     insert(req,res,sql).then(result =>{
-      res.render('adocao')
+      res.render('adocaosucess')
     })
   })
 
@@ -41,7 +41,7 @@ app.set('views', './views');
             connectString: "localhost:1521"
         });
         console.log(chalk.bgBlack.green('CONECTADO AO BANCO DE DADOS'));
-        await connection.execute(sql);
+        result = await connection.execute(sql);
     }catch (err) {
         return res.send(err.message);
     }finally {
@@ -55,6 +55,7 @@ app.set('views', './views');
               console.error(err.message);
             }
       }
+      return result
     }
   }
 //
