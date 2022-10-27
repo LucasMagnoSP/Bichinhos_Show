@@ -66,7 +66,7 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="/#hero"">Home</a></li>
+          <li><a href="/#hero">Home</a></li>
           <li><a href="/#about">Conheça nossa ONG</a></li>
           <li><a href="/#services">Faça uma doação</a></li>
           <li><a href="/#team">Sobre nós</a></li>
@@ -96,7 +96,7 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>DOE SEU BICHINHO</h2>
+              <h2>DOE UM BICHINHO</h2>
             </div>
           </div>
         </div>
@@ -104,68 +104,70 @@
     </div><!-- End Breadcrumbs -->
     
     <form class="row g-3"  method="post">
+      <div style="padding: 60px; margin-left: 435px;">
+        <div class="col-md-6">
+          <label for="exampleInputEmail1" class="form-label">Nome do Bichinho :</label>
+          <input type="text" class="form-control" id="inputNome" name="inputNome" required="required">
+        </div>
 
-      <div class="col-md-6">
-        <label for="exampleInputEmail1" class="form-label">Nome do Bichinho :</label>
-        <input type="text" class="form-control" id="inputNome" name="inputNome" required="required" >
-      </div>
+        <div class="col-md-6">
+          <label for="exampleInputEmail1" class="form-label">Raça :</label>
+            <input type="text" class="form-control" id="inputRaca"  name="inputRaca" required="required">
+        </div>
 
-      <div class="col-md-6">
-        <label for="exampleInputEmail1" class="form-label">Raça :</label>
-          <input type="text" class="form-control" id="inputRaca"  name="inputRaca" required="required">
-      </div>
+        <div class="col-md-6">
+          <label for="exampleInputEmail1" class="form-label">Cor :</label>
+              <input type="text" class="form-control" id="inputCor" name="inputCor" required="required">
+        </div>
 
-      <div class="col-12">
-        <label for="exampleInputEmail1" class="form-label">Cor :</label>
-            <input type="text" class="form-control" id="inputCor" name="inputCor" required="required">
-      </div>
+        <div class="col-md-6">
+          <label for="exampleInputEmail1" class="form-label">Peso :</label><div id="emailHelp" class="form-text">(Ex: 6.43)</div>
+            <input  type="number" lang="en" class="form-control" id="inputPeso" name="inputPeso" step="0.01"  required="required">
+        
 
-      <div class="col-12">
-        <label for="exampleInputEmail1" class="form-label">Peso :</label><div id="emailHelp" class="form-text">(Ex: 6.43)</div>
-          <input  type="number" lang="en" class="form-control" id="inputPeso" name="inputPeso" step="0.01"  required="required">
-      </div>
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Especie :</label>
+            <select class="form-select" aria-label="Default select example" id="inputEspecie" name="inputEspecie" required="required">
+              <option selected>Escolha :</option>
+              <option value="cachorros">Cachorro</option>
+              <option value="gatos">Gato</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="col-md-6">
-        <label for="inputState" class="form-label">Especie :</label>
-        <select class="form-select" aria-label="Default select example" id="inputEspecie" name="inputEspecie" required="required">
-          <option selected>Escolha :</option>
-          <option value="cachorros">Cachorro</option>
-          <option value="gatos">Gato</option>
-        </select>
-      </div>
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Idade</label>
+          <select class="form-select" aria-label="Default select example" id="inputIdade" name="inputIdade" required="required">
+            <option selected>Escolha :</option>
+            <option value="Filhote">Filhote</option>
+            <option value="Adulto">Adulto</option>
+            <option value="Idoso">Idoso</option>
+          </select>
+        </div>
 
-      <div class="col-md-6">
-        <label for="inputState" class="form-label">Idade</label>
-        <select class="form-select" aria-label="Default select example" id="inputIdade" name="inputIdade" required="required">
-          <option selected>Escolha :</option>
-          <option value="Filhote">Filhote</option>
-          <option value="Adulto">Adulto</option>
-          <option value="Idoso">Idoso</option>
-        </select>
-      </div>
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Sexo :</label>
+          <select class="form-select" aria-label="Default select example" id="inputSexo" name="inputSexo" required="required">
+            <option selected>Escolha :</option>
+            <option value="Macho">Macho</option>
+            <option value="Femea">Femea</option>
+          </select>
+        </div>
 
-      <div class="col-md-6">
-        <label for="inputState" class="form-label">Sexo :</label>
-        <select class="form-select" aria-label="Default select example" id="inputSexo" name="inputSexo" required="required">
-          <option selected>Escolha :</option>
-          <option value="Macho">Macho</option>
-          <option value="Femea">Femea</option>
-        </select>
-      </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Possui deficiencia ?</label>
+          <select class="form-select" aria-label="Default select example" id="inputDeficiencia" name="inputDeficiencia" required="required">
+            <option selected>Escolha :</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Nao</option>
+          </select>
+        </div>
 
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">Possui deficiencia ?</label>
-        <select class="form-select" aria-label="Default select example" id="inputDeficiencia" name="inputDeficiencia" required="required">
-          <option selected>Escolha :</option>
-          <option value="Sim">Sim</option>
-          <option value="Não">Nao</option>
-        </select>
+        <div class="col-12" style="margin-top: 10px;">
+          <button class="btn btn-primary">Enviar</button>
+        </div>
       </div>
-
-      <div class="col-12">
-        <button class="btn btn-primary">Enviar</button>
-      </div>
-    </form>
+      </form>
 
     
   </main><!-- End #main -->

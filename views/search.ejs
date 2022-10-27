@@ -101,23 +101,28 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
-      <form action="" method="post">
-        <div>
-            <label>ESCOLHA SEU TIPO DE BICHINHO PREFERIDO:</label>
-            <br>
-            <select id="pettype" name="pettype">
+      <form action="" method="post" class="row g-3" style="margin-left: 735px;">
+        <div style="padding: 60px;">
+            <div class="col-md-3">
+              <label for="inputBixo" class="form-label">ESCOLHA SEU TIPO DE BICHINHO PREFERIDO:</label>
+              <select id="pettype" name="pettype" class="form-select">
                 <option value="cachorros">Cachorro</option>
                 <option value="gatos">Gato</option>
-            </select>
-            <br><br>
-                <label><input type="radio" class="radio" id="option" value= "nome" name="option"  required="required"/>Nome</label>
-                <label><input type="radio" class="radio" id="option"  value= "raca" name="option" required="required" />Raça</label>
-                <label><input type="radio" class="radio" id="option" value= "cor" name="option"  required="required" />Cor</label>
-        </div>
-        <div>
-                <input id="searchInsert" name="searchInsert" class="form-control" placeholder="" type="text" required/>
-        </div>
-        <button>Buscar</button>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="inputFiltro" class="form-label" style="margin-top: 10px;">Filtrar Por:</label>
+              <select id="inputFiltro" name="inputFiltro" class="form-select">
+                <option value="nome">Nome</option>
+                <option value="raca">Raça</option>
+                <option value="cor">Cor</option>
+              </select>
+              <br>
+              <input id="searchInsert" name="searchInsert" class="form-control" placeholder="Digite aqui" type="text" required/>
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Buscar</button>
+            </div>
       </form>
     
   </main><!-- End #main -->

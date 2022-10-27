@@ -61,7 +61,7 @@ app.set('views', './views');
     res.render(`search`)
   })
   app.post('/search',(req,res)=>{
-    let sql = `SELECT JSON_OBJECT(*) FROM ${req.body.pettype} WHERE LOWER(${req.body.option}) LIKE LOWER('%${req.body.searchInsert}%')`
+    let sql = `SELECT JSON_OBJECT(*) FROM ${req.body.pettype} WHERE LOWER(${req.body.inputFiltro}) LIKE LOWER('%${req.body.searchInsert}%')`
     querry(req,res,sql).then(result=>{
       if(result.rows.length == 0) return res.render('search') 
       const objarry = new Array;
