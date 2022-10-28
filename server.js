@@ -2,7 +2,8 @@ var express = require("express");
 const port = 5000;
 const app = express();
 const oracledb = require('oracledb');
-const chalk = require('chalk')
+const chalk = require('chalk');
+const moment = require("moment/moment");
  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,20 @@ app.set('views', './views');
   app.get("/", (req, res) => {
     res.render('index');
   });
+//
+//ADOTADOS
+  app.get('/adotados',(req,res)=>{
+    let sql = `select JSON_OBJECT(*) from adotados`
+    const objarry = new Array;
+    querry(req,res,sql).then(result =>{
+        for (let i in result.rows) {
+            objarry.push(JSON.parse(result.rows[i]))
+            moment.locale('pt-br')
+            objarry[i].ADOCAO = moment(objarry[i].ADOCAO).fromNow();
+        }
+        res.render('adotados',{data : objarry})
+    })
+  })
 //
 //ADOÇÃO
   app.get("/adocao", (req, res) => {

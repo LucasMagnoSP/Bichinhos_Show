@@ -115,6 +115,7 @@
           </li>
           <li><a href="../search">Pesquisa</a></li>
           <li><a href="../adocao">Quer doar seu bichinho ?</a></li>
+          <li><a href="../adotados">Bichinhos já adotados</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -133,46 +134,46 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>GATINHOS</h2>
+              <h2 style="font-family: var(--font-primary);">GATINHOS</h2>
             </div>
           </div>
         </div>
       </div>
     </div><!-- End Breadcrumbs -->
     <!--Table -->
-    <div class="table-responsive">
-        <table id="example" class="table table-striped"  style="width:100%">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Sexo</th>
-              <th>Idade</th>
-              <th>Deficiencia</th>
-              <th>Raça</th>
-              <th>Cor</th>
-              <th>Peso</th>
+    <table id="example" class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sexo</th>
+          <th>Idade</th>
+          <th>Deficiencia</th>
+          <th>Raça</th>
+          <th>Cor</th>
+          <th>Peso</th>
+          <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<data.length; i++) {%>
+          <tr>
+              <td><%= data[i].NOME %></td>
+              <td> <%= data[i].SEXO %></td>
+              <td><%= data[i].IDADE %></td> 
+              <td> <%= data[i].DEFICIENCIA %></td>
+              <td> <%= data[i].RACA %></td>
+              <td> <%= data[i].COR %></td>
+              <td> <%= data[i].PESO %></td>
+              <td><button class="btn btn-primary">Adotar</button></td>
           </tr>
-          </thead>
-          <tbody>
-            <% for(var i=0; i<data.length; i++) {%>
-              <tr>
-                  <td><%= data[i].NOME %></td>
-                  <td> <%= data[i].SEXO %></td>
-                  <td><%= data[i].IDADE %></td> 
-                  <td> <%= data[i].DEFICIENCIA %></td>
-                  <td> <%= data[i].RACA %></td>
-                  <td> <%= data[i].COR %></td>
-                  <td> <%= data[i].PESO %></td>
-              </tr>
-            </div>
-            <% } %>
-          </tbody>
-          <tfoot>
-              
-          </tfoot>
-      </table>
-    </div>
-    <!--Table -->
+        </div>
+        <% } %>
+      </tbody>
+      <tfoot>
+          
+      </tfoot>
+  </table>
+<!--Table -->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

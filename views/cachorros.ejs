@@ -114,11 +114,11 @@
             <ul>
               <li><a href="../gatos">Gatinho</a></li>
               <li><a href="../cachorros">Cachorrinho</a></li>
-              <li><a href="../adocao">Quer doar seu bichinho ?</a></li>
             </ul>
           </li>
           <li><a href="../search">Pesquisa</a></li>
           <li><a href="../adocao">Quer doar seu bichinho ?</a></li>
+          <li><a href="../adotados">Bichinhos já adotados</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -137,7 +137,7 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>CACHORRINHOS</h2>
+              <h2 style="font-family: var(--font-primary);">CACHORRINHOS</h2>
             </div>
           </div>
         </div>
@@ -154,6 +154,7 @@
               <th>Raça</th>
               <th>Cor</th>
               <th>Peso</th>
+              <th></th>
           </tr>
           </thead>
           <tbody>
@@ -166,7 +167,7 @@
                   <td> <%= data[i].RACA %></td>
                   <td> <%= data[i].COR %></td>
                   <td> <%= data[i].PESO %></td>
-                  
+                  <td><button class="btn btn-primary">Adotar</button></td>
               </tr>
             </div>
             <% } %>
