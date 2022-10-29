@@ -29,7 +29,7 @@
  </a>
   <h3 align="center">Bichinhos Show</h3>
   <p align="center">
-    Bixinhos show é um projeto pensado por 8 estudantes com o intuito de treinar e mostrar suas habilidades em Front-End e Back-End com JS, OracleBD, Nodejs e Bootstrap.
+    BixinhosShow é um projeto pensado por 8 estudantes com o intuito de treinar e mostrar suas habilidades em Front-End e Back-End com JS, OracleBD, Nodejs e Bootstrap.
     <br />
     <br />
     <br />
