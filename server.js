@@ -12,10 +12,20 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 //HOME
-  app.get("/", (req, res) => {
+  app.get("/", (req, res) => { 
     res.render('index');
   });
 //
+
+//PROFILE
+app.post('/profile',(req,res)=>{ // OK
+
+  req.
+  res.render('profile', data)
+})
+
+//
+
 //ADOTADOS
   app.get('/adotados',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from adotados`
@@ -69,6 +79,10 @@ app.set('views', './views');
         }
         res.render('gatos',{data : objarryGatos})
     })
+  })
+
+  app.post('/gatos',(req,res)=>{
+    res.render('profile')
   })
 //
 //PESQUISA
