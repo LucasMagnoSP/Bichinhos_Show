@@ -165,13 +165,19 @@
                     <td  style="text-align: center;"> <%= data[i].SEXO %></td>
                     <td  style="text-align: center;"><%= data[i].IDADE %></td> 
                     <td style="text-align: center;" > <%= data[i].COR %></td>
-                    <td  style="text-align: center;">
-                      <form action="../profile" method="get">
-                        <%=data[i]%>
-                        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Adotar</button>
+                    <td style="text-align: center;">
+                      <form action="" method="post" id="valor" name="valor">
+                        <input id="nome" name="nome" value="<%= data[i].NOME%>" hidden >
+                        <input id="especie" name="especie" value="<%= data[i].ESPECIE%>" hidden>
+                        <input id="sexo" name="sexo" value="<%= data[i].SEXO%>" hidden>
+                        <input id="idade" name="idade" value="<%= data[i].IDADE%>" hidden>
+                        <input id="deficiencia" name="deficiencia" value="<%= data[i].DEFICIENCIA%>" hidden>
+                        <input id="raca" name="raca" value="<%= data[i].RACA%>" hidden>
+                        <input id="cor" name="cor" value="<%= data[i].COR%>" hidden>
+                        <input id="peso" name="peso" value="<%= data[i].PESO%>" hidden>
+                        <button class="btn btn-primary" type="submit">Me Adote</button>
                       </form>
                     </td>
-                    
                 </tr>
               </div>
               <% } %>

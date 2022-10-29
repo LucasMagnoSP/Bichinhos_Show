@@ -12,20 +12,14 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 //HOME
-  app.get("/", (req, res) => { 
+  app.get("/", (req, res) => {
     res.render('index');
   });
 //
+//ADOTAR
 
-//PROFILE
-app.post('/profile',(req,res)=>{ // OK
-
-  req.
-  res.render('profile', data)
-})
 
 //
-
 //ADOTADOS
   app.get('/adotados',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from adotados`
@@ -61,11 +55,24 @@ app.post('/profile',(req,res)=>{ // OK
   app.get('/cachorros',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from cachorros`
     const objarryCa = new Array;
-    querry(req,res,sql).then(result =>{
+      querry(req,res,sql).then(result =>{
         for (let i in result.rows) {
             objarryCa.push(JSON.parse(result.rows[i]))
         }
         res.render('cachorros',{data : objarryCa})
+    })
+  })
+
+  app.post('/cachorros',(req,res)=>{
+    let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM cachorros WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+    querry(req,res,sql).then(result=>{
+      let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+        querry(req,res,sql).then(result =>{
+          let sql = `DELETE FROM cachorros WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+          querry(req,res,sql).then(result =>{
+            res.redirect('adotados')
+          })
+        })
     })
   })
 //
@@ -82,7 +89,16 @@ app.post('/profile',(req,res)=>{ // OK
   })
 
   app.post('/gatos',(req,res)=>{
-    res.render('profile')
+    let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM gatos WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+    querry(req,res,sql).then(result=>{
+      let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+        querry(req,res,sql).then(result =>{
+          let sql = `DELETE FROM gatos WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+          querry(req,res,sql).then(result =>{
+            res.redirect('adotados')
+          })
+        })
+    })
   })
 //
 //PESQUISA
