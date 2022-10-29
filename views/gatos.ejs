@@ -4,8 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bichinhos Show</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -17,7 +15,6 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -94,16 +91,15 @@
   </section><!-- End Top Bar -->
 
   <header id="header" class="header d-flex align-items-center">
-
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="/#" class="logo d-flex align-items-center">
+      <a href="#" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
          <img src="assets\img\Logo\Design sem nome (17).png" alt="Logo"> 
        <!-- <h1>Impact<span>.</span></h1>-->
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="/#hero"">Home</a></li>
+          <li><a href="/#hero">Home</a></li>
           <li><a href="/#about">Conheça nossa ONG</a></li>
           <li><a href="/#services">Faça uma doação</a></li>
           <li><a href="/#team">Sobre nós</a></li>
@@ -116,6 +112,7 @@
           <li><a href="../search">Pesquisa</a></li>
           <li><a href="../adocao">Quer doar seu bichinho ?</a></li>
           <li><a href="../adotados">Bichinhos já adotados</a></li>
+
         </ul>
       </nav><!-- .navbar -->
 
@@ -140,40 +137,45 @@
         </div>
       </div>
     </div><!-- End Breadcrumbs -->
-    <!--Table -->
-    <table id="example" class="table table-striped" style="width:100%">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Sexo</th>
-          <th>Idade</th>
-          <th>Deficiencia</th>
-          <th>Raça</th>
-          <th>Cor</th>
-          <th>Peso</th>
-          <th></th>
-      </tr>
-      </thead>
-      <tbody>
-        <% for(var i=0; i<data.length; i++) {%>
-          <tr>
-              <td><%= data[i].NOME %></td>
-              <td> <%= data[i].SEXO %></td>
-              <td><%= data[i].IDADE %></td> 
-              <td> <%= data[i].DEFICIENCIA %></td>
-              <td> <%= data[i].RACA %></td>
-              <td> <%= data[i].COR %></td>
-              <td> <%= data[i].PESO %></td>
-              <td><button class="btn btn-primary">Adotar</button></td>
-          </tr>
-        </div>
-        <% } %>
-      </tbody>
-      <tfoot>
-          
-      </tfoot>
-  </table>
-<!--Table -->
+        <!--Table -->
+        <div class="container my-5" style="width:100%">
+          <table id="example" class="table align-middle mb-1 row-border display compact ">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th  style="text-align: center;">Sexo</th>
+                <th  style="text-align: center;">Idade</th>
+                <th style="text-align: center;">Cor</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<data.length; i++) {%>
+                <tr>
+                    <td style="position: center;">
+                      <div class="d-flex align-items-center">
+                        <img
+                             src="../assets/img/team/1650555.png" alt="" style="width: 65px; height: 65px"/>
+                        <div class="ms-3">
+                          <p class="fw-bold mb-1"><%= data[i].NOME %></p>
+                          <p class="text-muted mb-0"><%= data[i].RACA %></p>
+                        </div>
+                      </div>
+                    </td>
+                    <td  style="text-align: center;"> <%= data[i].SEXO %></td>
+                    <td  style="text-align: center;"><%= data[i].IDADE %></td> 
+                    <td style="text-align: center;" > <%= data[i].COR %></td>
+                    <td style="text-align: center;"><button class="btn btn-primary">Mais Detalhes</button></td>
+                </tr>
+              </div>
+              <% } %>
+            </tbody>
+            <tfoot>
+                
+            </tfoot>
+        </table>
+    </div>
+      <!--Table -->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

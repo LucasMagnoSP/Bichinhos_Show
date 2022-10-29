@@ -45,9 +45,9 @@
         $(document).ready(function() {
           $('#example').DataTable( {
             "language": {
-              "lengthMenu": "Mostrando _MENU_ gatinho(s) por pagina",
+              "lengthMenu": "Mostrando _MENU_ cachorrinho(s) por pagina",
               "search":         "Busca :",
-              "zeroRecords": "Nenhum gatinho encontrado - Desculpe :/",
+              "zeroRecords": "Nenhum cachorrinho encontrado - Desculpe :/",
               "info": "Mostrando pagina _PAGE_ de _PAGES_",
               "infoEmpty": "Nada encontrado",
               "infoFiltered": "(pesquisado em _MAX_ resultadados totais)",
@@ -68,6 +68,8 @@
           } );
       } );
     </script>
+
+
   <!-- -->
 
   <!-- =======================================================
@@ -124,7 +126,6 @@
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
@@ -144,30 +145,34 @@
       </div>
     </div><!-- End Breadcrumbs -->
     <!--Table -->
-        <table id="example" class="table table-striped" style="width:100%">
+    <div class="container my-5" style="width:100%">
+        <table id="example" class="table align-middle mb-1 row-border display compact ">
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Sexo</th>
-              <th>Idade</th>
-              <th>Deficiencia</th>
-              <th>Raça</th>
-              <th>Cor</th>
-              <th>Peso</th>
+              <th  style="text-align: center;">Sexo</th>
+              <th  style="text-align: center;">Idade</th>
+              <th style="text-align: center;">Cor</th>
               <th></th>
           </tr>
           </thead>
           <tbody>
             <% for(var i=0; i<data.length; i++) {%>
               <tr>
-                  <td><%= data[i].NOME %></td>
-                  <td> <%= data[i].SEXO %></td>
-                  <td><%= data[i].IDADE %></td> 
-                  <td> <%= data[i].DEFICIENCIA %></td>
-                  <td> <%= data[i].RACA %></td>
-                  <td> <%= data[i].COR %></td>
-                  <td> <%= data[i].PESO %></td>
-                  <td><button class="btn btn-primary">Adotar</button></td>
+                  <td style="position: center;">
+                    <div class="d-flex align-items-center">
+                      <img
+                           src="../assets/img/team/um-modelo-de-adesivo-de-personagem-de-desenho-animado-de-cachorro_1308-74833.png" alt="" style="width: 65px; height: 65px"/>
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1"><%= data[i].NOME %></p>
+                        <p class="text-muted mb-0"><%= data[i].RACA %></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td  style="text-align: center;"> <%= data[i].SEXO %></td>
+                  <td  style="text-align: center;"><%= data[i].IDADE %></td> 
+                  <td style="text-align: center;" > <%= data[i].COR %></td>
+                  <td style="text-align: center;"><button class="btn btn-primary">Mais Detalhes</button></td>
               </tr>
             </div>
             <% } %>
@@ -176,6 +181,7 @@
               
           </tfoot>
       </table>
+  </div>
     <!--Table -->
   </main><!-- End #main -->
 

@@ -61,7 +61,7 @@ app.set('views', './views');
 //
 //GATOS
   app.get('/gatos',(req,res)=>{
-    let sql = `select JSON_OBJECT(*) from gatos`
+    let sql = `SELECT JSON_OBJECT(*) FROM gatos`
     querry(req,res,sql).then(result =>{
         const objarryGatos = new Array;
         for (let i in result.rows) {
