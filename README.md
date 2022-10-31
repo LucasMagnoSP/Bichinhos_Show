@@ -16,6 +16,8 @@ https://user-images.githubusercontent.com/89169447/198942855-575878c3-2e5d-4459-
 
 
 ## Sobre o Projeto
+
+
 -----------
 -----------
 -----------
@@ -28,6 +30,8 @@ https://user-images.githubusercontent.com/89169447/198942855-575878c3-2e5d-4459-
 * <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white" />
 * <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" />
 
+
+
 ## Desenvolvedores :
 
 ### Back-End 
@@ -38,3 +42,7 @@ https://user-images.githubusercontent.com/89169447/198942855-575878c3-2e5d-4459-
 * Maira Trindade
 * Mayara Lucy
 * Vitoria Rodriges
+
+## Contado :
+
+https://linktr.ee/BichinhosShow
