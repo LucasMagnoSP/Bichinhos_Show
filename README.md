@@ -44,7 +44,6 @@ O projeto Bichinhos Show surgiu com a meta de ajudar animais sem lar a encontrar
 
 ## Desenvolvedores :
 
- <br />
 
 ### Back-End 
 * Evylla Oliveira
