@@ -37,6 +37,7 @@ https://user-images.githubusercontent.com/89169447/198942855-575878c3-2e5d-4459-
 ### Back-End 
 * Evylla Oliveira
 * Lucas Magno
+* Bruno Ricardo
 
 ### Front-End 
 * Maira Trindade
