@@ -1,10 +1,14 @@
 <!-- PROJECT LOGO -->
 <br />
+ <h3 align="center">Bichinhos Show</h3>
 <div align="center">
  
 ![Sem título](https://user-images.githubusercontent.com/89169447/197253224-955f97a3-151e-410a-aa67-d29d473949b0.jpg)
+
+
+
  </a>
-  <h3 align="center">Bichinhos Show</h3>
+ 
   <p align="center">
     BixinhosShow é um projeto pensado por 8 estudantes com o intuito de treinar e mostrar suas habilidades em Front-End e Back-End com JS, OracleBD, Nodejs e Bootstrap.
     <br />
