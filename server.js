@@ -16,10 +16,6 @@ app.set('views', './views');
     res.render('index');
   });
 //
-//ADOTAR
-
-
-//
 //ADOTADOS
   app.get('/adotados',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from adotados`
@@ -40,11 +36,7 @@ app.set('views', './views');
   });
   app.post('/adocao',(req,res)=>{
     let especieSql
-    if(req.body.inputEspecie == 'cachorros'){
-       especieSql = 'Cachorro'
-    }else{
-       especieSql = 'Gato'
-    }
+    if(req.body.inputEspecie == 'cachorros' ? especieSql = 'Cachorro' : especieSql = 'Gato' );
     let sql = `INSERT INTO ${req.body.inputEspecie}(nome,especie,sexo,idade,deficiencia,raca,cor,peso) VALUES ('${req.body.inputNome}','${especieSql}','${req.body.inputSexo}','${req.body.inputIdade}','${req.body.inputDeficiencia}','${req.body.inputRaca}','${req.body.inputCor}',${req.body.inputPeso})`
     querry(req,res,sql).then(result =>{
       res.render('adocaosucess')
@@ -62,18 +54,9 @@ app.set('views', './views');
         res.render('cachorros',{data : objarryCa})
     })
   })
-
   app.post('/cachorros',(req,res)=>{
-    let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM cachorros WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-    querry(req,res,sql).then(result=>{
-      let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-        querry(req,res,sql).then(result =>{
-          let sql = `DELETE FROM cachorros WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-          querry(req,res,sql).then(result =>{
-            res.redirect('adotados')
-          })
-        })
-    })
+    let table = 'cachorros'
+    querryAdotar(req,res,table)
   })
 //
 //GATOS
@@ -87,18 +70,9 @@ app.set('views', './views');
         res.render('gatos',{data : objarryGatos})
     })
   })
-
   app.post('/gatos',(req,res)=>{
-    let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM gatos WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-    querry(req,res,sql).then(result=>{
-      let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-        querry(req,res,sql).then(result =>{
-          let sql = `DELETE FROM gatos WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-          querry(req,res,sql).then(result =>{
-            res.redirect('adotados')
-          })
-        })
-    })
+    let table = 'gatos'
+    querryAdotar(req,res,table)
   })
 //
 //PESQUISA
@@ -117,7 +91,21 @@ app.set('views', './views');
     })
   })
 //
-//PEGAR TODOS OS DADOS DO BANCO
+//Querry Adoção
+  function querryAdotar(req,res,table){
+    let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM ${table} WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+    querry(req,res,sql).then(result=>{
+      let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+        querry(req,res,sql).then(result =>{
+          let sql = `DELETE FROM ${table} WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
+          querry(req,res,sql).then(result =>{
+            res.redirect('adotados')
+          })
+        })
+    })
+  }
+//
+//Querry
 async function querry(req, res , sql) {
   try {
       connection = await oracledb.getConnection({
@@ -127,7 +115,7 @@ async function querry(req, res , sql) {
       });
       console.log(chalk.bgBlack.green('CONECTADO AO BANCO DE DADOS'));
       result = await connection.execute(sql);
-      await connection.execute('commit')
+      //await connection.execute('commit')
   } catch (err) {
       return res.send(err.message);
   } finally {

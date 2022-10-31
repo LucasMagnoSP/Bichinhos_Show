@@ -45,9 +45,9 @@
         $(document).ready(function() {
           $('#example').DataTable( {
             "language": {
-              "lengthMenu": "Mostrando _MENU_ gatinho(s) por pagina",
+              "lengthMenu": "Mostrando _MENU_ bichinho(s) por pagina",
               "search":         "Busca :",
-              "zeroRecords": "Nenhum gatinho encontrado - Desculpe :/",
+              "zeroRecords": "Nenhum bichinho encontrado - Desculpe :/",
               "info": "Mostrando pagina _PAGE_ de _PAGES_",
               "infoEmpty": "Nada encontrado",
               "infoFiltered": "(pesquisado em _MAX_ resultadados totais)",
@@ -144,41 +144,50 @@
       </div>
     </div><!-- End Breadcrumbs -->
     <!--Table -->
-        <table id="example" class="table table-striped" style="width:100%">
-          <thead>
+    <div class="container my-5" style="width:100%">
+      <table id="example" class="table align-middle mb-1 row-border display compact ">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th  style="text-align: center;">Sexo</th>
+            <th  style="text-align: center;">Idade</th>
+            <th style="text-align: center;">Cor</th>
+            <th style="text-align: center;">Adotado</th>
+            <th  style="text-align: center;" hidden >Especie</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) {%>
             <tr>
-              <th>Nome</th>
-              <th>Especie</th>
-              <th>Sexo</th>
-              <th>Idade</th>
-              <th>Deficiencia</th>
-              <th>Raça</th>
-              <th>Cor</th>
-              <th>Peso</th>
-              <th>Adotado</th>
-          </tr>
-          </thead>
-          <tbody>
-            <% for(var i=0; i<data.length; i++) {%>
-              <tr>
-                  <td><%= data[i].NOME %></td>
-                  <td><%= data[i].ESPECIE %></td>
-                  <td> <%= data[i].SEXO %></td>
-                  <td><%= data[i].IDADE %></td> 
-                  <td> <%= data[i].DEFICIENCIA %></td>
-                  <td> <%= data[i].RACA %></td>
-                  <td> <%= data[i].COR %></td>
-                  <td> <%= data[i].PESO %></td>
-                  <td> <%= data[i].ADOCAO %></td>
-              </tr>
-            </div>
-            <% } %>
-          </tbody>
-          <tfoot>
-              
-          </tfoot>
-      </table>
-    <!--Table -->
+                <td style="position: center;">
+                  <div class="d-flex align-items-center">
+                    <% if (data[i].ESPECIE == 'Gato') { %>
+                      <img src="../assets/img/team/1650555.png" alt="" style="width: 65px; height: 65px"/>
+                    <% } else { %>
+                      <img src="../assets/img/team//um-modelo-de-adesivo-de-personagem-de-desenho-animado-de-cachorro_1308-74833.png" alt="" style="width: 65px; height: 65px"/>
+                    <% } %>
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1"><%= data[i].NOME %></p>
+                      <p class="text-muted mb-0"><%= data[i].RACA %></p>
+                    </div>
+                  </div>
+                </td>
+                <td  style="text-align: center;"> <%= data[i].SEXO %></td>
+                <td  style="text-align: center;"><%= data[i].IDADE %></td> 
+                <td style="text-align: center;" > <%= data[i].COR %></td>
+                <td style="text-align: center;" > <%= data[i].ADOCAO %></td>
+                <td style="text-align: center;" hidden> <%= data[i].ESPECIE %></td>
+                
+            </tr>
+          </div>
+          <% } %>
+        </tbody>
+        <tfoot>
+            
+        </tfoot>
+    </table>
+</div>
+  <!--Table -->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
