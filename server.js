@@ -115,7 +115,7 @@ async function querry(req, res , sql) {
       });
       console.log(chalk.bgBlack.green('CONECTADO AO BANCO DE DADOS'));
       result = await connection.execute(sql);
-      //await connection.execute('commit')
+      await connection.execute('commit')
   } catch (err) {
       return res.send(err.message);
   } finally {
