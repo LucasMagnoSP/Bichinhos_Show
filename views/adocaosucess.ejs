@@ -97,18 +97,57 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2 style="font-family: var(--font-primary);">COLOCADO PARA ADOÇÃO COM SUCESSO</h2>
+              <h2 style="font-family: var(--font-primary);">COLOCADO PARA ADOÇÃO COM SUCESSO !<br> <br><h3>DETALHES DO BICHINHO :</h3></h2>
             </div>
           </div>
         </div>
       </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <li><a href="/">VOLTAR PARA HOME</a></li>
-          </ol>
-        </div>
-      </nav>
+      <!--Table -->
+    <div class="container my-5" style="width:100%">
+      <table id="example" class="table align-middle mb-1 row-border display compact ">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th  style="text-align: center;">Sexo</th>
+            <th  style="text-align: center;">Idade</th>
+            <th style="text-align: center;">Cor</th>
+            <th  style="text-align: center;" >Especie</th>
+            <th  style="text-align: center;" >Peso</th>
+            <th  style="text-align: center;" >Deficiencia</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="position: center;">
+                  <div class="d-flex align-items-center">
+                    <% if (data.ESPECIE == 'Gato') { %>
+                      <img src="../assets/img/team/1650555.png" alt="" style="width: 65px; height: 65px"/>
+                    <% } else { %>
+                      <img src="../assets/img/team//um-modelo-de-adesivo-de-personagem-de-desenho-animado-de-cachorro_1308-74833.png" alt="" style="width: 65px; height: 65px"/>
+                    <% } %>
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1"><%= data.NOME %></p>
+                      <p class="text-muted mb-0"><%= data.RACA %></p>
+                    </div>
+                  </div>
+                </td>
+                <td  style="text-align: center;"> <%= data.SEXO %></td>
+                <td  style="text-align: center;"><%= data.IDADE %></td> 
+                <td style="text-align: center;" > <%= data.COR %></td>
+                <td style="text-align: center;"> <%= data.ESPECIE %></td>
+                <td style="text-align: center;"> <%= data.PESO %></td>
+                <td style="text-align: center;"> <%= data.DEFICIENCIA %></td>
+                
+            </tr>
+          </div>
+        </tbody>
+        <tfoot>
+            
+        </tfoot>
+    </table>
+</div>
+  <!--Table -->
     </div><!-- End Breadcrumbs -->
     
    

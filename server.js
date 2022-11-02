@@ -4,6 +4,7 @@ const app = express();
 const oracledb = require('oracledb');
 const chalk = require('chalk');
 const moment = require("moment/moment");
+const { query } = require("express");
  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +40,10 @@ app.set('views', './views');
     if(req.body.inputEspecie == 'cachorros' ? especieSql = 'Cachorro' : especieSql = 'Gato' );
     let sql = `INSERT INTO ${req.body.inputEspecie}(nome,especie,sexo,idade,deficiencia,raca,cor,peso) VALUES ('${req.body.inputNome}','${especieSql}','${req.body.inputSexo}','${req.body.inputIdade}','${req.body.inputDeficiencia}','${req.body.inputRaca}','${req.body.inputCor}',${req.body.inputPeso})`
     querry(req,res,sql).then(result =>{
-      res.render('adocaosucess')
+      let sql = `SELECT JSON_OBJECT(*) FROM ${req.body.inputEspecie} WHERE LOWER(nome) = LOWER('${req.body.inputNome}') AND peso = ${req.body.inputPeso} AND idade = '${req.body.inputIdade}' AND sexo  = '${req.body.inputSexo}' `
+      querry(req,res,sql).then(result =>{
+        res.render('adocaosucess', {data : JSON.parse(result.rows[0])})
+      })
     })
   })
 //
