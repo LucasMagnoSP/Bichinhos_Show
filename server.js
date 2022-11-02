@@ -4,8 +4,7 @@ const app = express();
 const oracledb = require('oracledb');
 const chalk = require('chalk');
 const moment = require("moment/moment");
-const { query } = require("express");
- 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
@@ -21,7 +20,7 @@ app.set('views', './views');
   app.get('/adotados',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from adotados`
     const objarry = new Array;
-    querry(req,res,sql).then(result =>{
+    query(req,res,sql).then(result =>{
         for (let i in result.rows) {
             objarry.push(JSON.parse(result.rows[i]))
             moment.locale('pt-br')
@@ -39,9 +38,9 @@ app.set('views', './views');
     let especieSql
     if(req.body.inputEspecie == 'cachorros' ? especieSql = 'Cachorro' : especieSql = 'Gato' );
     let sql = `INSERT INTO ${req.body.inputEspecie}(nome,especie,sexo,idade,deficiencia,raca,cor,peso) VALUES ('${req.body.inputNome}','${especieSql}','${req.body.inputSexo}','${req.body.inputIdade}','${req.body.inputDeficiencia}','${req.body.inputRaca}','${req.body.inputCor}',${req.body.inputPeso})`
-    querry(req,res,sql).then(result =>{
+    query(req,res,sql).then(result =>{
       let sql = `SELECT JSON_OBJECT(*) FROM ${req.body.inputEspecie} WHERE LOWER(nome) = LOWER('${req.body.inputNome}') AND peso = ${req.body.inputPeso} AND idade = '${req.body.inputIdade}' AND sexo  = '${req.body.inputSexo}' `
-      querry(req,res,sql).then(result =>{
+      query(req,res,sql).then(result =>{
         res.render('adocaosucess', {data : JSON.parse(result.rows[0])})
       })
     })
@@ -51,7 +50,7 @@ app.set('views', './views');
   app.get('/cachorros',(req,res)=>{
     let sql = `select JSON_OBJECT(*) from cachorros`
     const objarryCa = new Array;
-      querry(req,res,sql).then(result =>{
+      query(req,res,sql).then(result =>{
         for (let i in result.rows) {
             objarryCa.push(JSON.parse(result.rows[i]))
         }
@@ -60,13 +59,13 @@ app.set('views', './views');
   })
   app.post('/cachorros',(req,res)=>{
     let table = 'cachorros'
-    querryAdotar(req,res,table)
+    queryAdotar(req,res,table)
   })
 //
 //GATOS
   app.get('/gatos',(req,res)=>{
     let sql = `SELECT JSON_OBJECT(*) FROM gatos`
-    querry(req,res,sql).then(result =>{
+    query(req,res,sql).then(result =>{
         const objarryGatos = new Array;
         for (let i in result.rows) {
             objarryGatos.push(JSON.parse(result.rows[i]))
@@ -76,7 +75,7 @@ app.set('views', './views');
   })
   app.post('/gatos',(req,res)=>{
     let table = 'gatos'
-    querryAdotar(req,res,table)
+    queryAdotar(req,res,table)
   })
 //
 //PESQUISA
@@ -85,7 +84,7 @@ app.set('views', './views');
   })
   app.post('/search',(req,res)=>{
     let sql = `SELECT JSON_OBJECT(*) FROM ${req.body.pettype} WHERE LOWER(${req.body.inputFiltro}) LIKE LOWER('%${req.body.searchInsert}%')`
-    querry(req,res,sql).then(result=>{
+    query(req,res,sql).then(result=>{
       if(result.rows.length == 0) return res.render('search') 
       const objarry = new Array;
       for (let i in result.rows) { 
@@ -96,21 +95,21 @@ app.set('views', './views');
   })
 //
 //Querry Adoção
-  function querryAdotar(req,res,table){
+  function queryAdotar(req,res,table){
     let sql = `INSERT INTO adotados(nome,especie,sexo,idade,deficiencia,raca,cor,peso) SELECT * FROM ${table} WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-    querry(req,res,sql).then(result=>{
+    query(req,res,sql).then(result=>{
       let sql = `UPDATE adotados SET adocao = sysdate WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-        querry(req,res,sql).then(result =>{
+        query(req,res,sql).then(result =>{
           let sql = `DELETE FROM ${table} WHERE LOWER(nome) = LOWER('${req.body.nome}') AND peso = ${req.body.peso}`
-          querry(req,res,sql).then(result =>{
+          query(req,res,sql).then(result =>{
             res.redirect('adotados')
           })
         })
     })
   }
 //
-//Querry
-async function querry(req, res , sql) {
+//Query Pool
+async function query(req, res , sql) {
   try {
       connection = await oracledb.getConnection({
           user: "lucas",
@@ -118,15 +117,15 @@ async function querry(req, res , sql) {
           connectString: "localhost:1521"
       });
       console.log(chalk.bgBlack.green('CONECTADO AO BANCO DE DADOS'));
-      result = await connection.execute(sql);
-      await connection.execute('commit')
   } catch (err) {
       return res.send(err.message);
   } finally {
       if (connection) {
           try {
-          await connection.close();
-          console.log(chalk.bgBlack.red('CONN FINALIZADA'));
+            result = await connection.execute(sql);
+            await connection.execute('commit')
+            await connection.close();
+            console.log(chalk.bgBlack.red('CONN FINALIZADA'));
           } catch (err) {
               console.error(err.message);
           }
